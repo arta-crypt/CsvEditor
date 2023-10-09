@@ -7,7 +7,7 @@ from design_pattern.command_pattern.command import Command
 from viewmodel.file_control_viewmodel import FileControlViewModel
 
 
-class FileReadCommand(Command):
+class _SetDataCommand(Command):
     def __init__(self,
                  data: pd.DataFrame,
                  receiver: FileControlViewModel) -> None:
@@ -75,7 +75,7 @@ class FileControlFrame(ttk.Frame):
     def read_file(self) -> None:
         data = self.read_file_core()
         if not data is None:
-            FileReadCommand(data=data,
+            _SetDataCommand(data=data,
                             receiver=self._viewmodel).execute()
         else:
             pass

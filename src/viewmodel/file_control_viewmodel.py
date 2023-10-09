@@ -5,7 +5,7 @@ from design_pattern.observer_pattern.subject import Subject
 from model.data_model import DataModel
 
 
-class SetDataCommand(Command):
+class _SetDataCommand(Command):
     def __init__(self,
                  data: pd.DataFrame,
                  receiver: DataModel) -> None:
@@ -25,4 +25,4 @@ class FileControlViewModel(Subject):
         self._data_model = self._root_viewmodel.data_model
 
     def set_data(self, data: pd.DataFrame) -> None:
-        SetDataCommand(data=data, receiver=self._data_model).execute()
+        _SetDataCommand(data=data, receiver=self._data_model).execute()
